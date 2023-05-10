@@ -20,7 +20,7 @@ const clientConf = {
 const client = new AuthorizationCode(clientConf);
 
 const authorizationUri = client.authorizeURL({
-  redirect_uri: 'http://localhost:18821/callback',
+  redirect_uri: 'http://' + config["server_ip"] + ':18821/callback',
   scope: 'public identify'
 });
 
@@ -105,7 +105,7 @@ async function getToken() {
     const { code } = req.query;
     const options = {
         code,
-        redirect_uri: 'http://localhost:18821/callback',
+        redirect_uri: 'http://' + config["server_ip"] + ':18821/callback',
         scope: 'public identify'
     };
 
